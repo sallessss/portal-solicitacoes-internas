@@ -1,0 +1,79 @@
+name: Integração e Entrega Contínua
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  pull_request:
+    branches:
+      - main
+      - master
+
+jobs:
+  backend:
+    name: Testes do backend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Executar testes do backend
+        working-directory: backend
+        run: mvn test
+
+  frontend:
+    name: Qualidade do frontend
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Instalar dependências
+        working-directory: frontend
+        run: npm ci
+
+      - name: Executar lint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Executar testes do frontend
+        working-directory: frontend
+        run: npm run test:run
+
+      - name: Gerar build do frontend
+        working-directory: frontend
+        run: npm run build
+
+  docker:
+    name: Build com Docker Compose
+    runs-on: ubuntu-latest
+    needs:
+      - backend
+      - frontend
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Validar Docker Compose
+        run: docker compose config
+
+      - name: Gerar build dos serviços
+        run: docker compose build

@@ -1,8 +1,8 @@
-# Portal de Solicitações Internas
+Portal de Solicitações Internas
 
-Sistema full stack para registro, acompanhamento e gerenciamento de solicitações internas, desenvolvido para a segunda etapa do processo seletivo da bit Soluções.
+Sistema full stack para registro, acompanhamento e gerenciamento de solicitações internas, com controle de acesso por perfil de usuário.
 
-O projeto permite que usuários criem solicitações, acompanhem detalhes e editem ou excluam solicitações abertas próprias. Administradores visualizam todas as solicitações ativas e alteram o status conforme o fluxo permitido.
+A aplicação permite criar, consultar, editar e excluir solicitações próprias enquanto estiverem abertas. Usuários administradores podem visualizar as solicitações ativas e atualizar seus status conforme as regras de negócio.
 
 ## Tecnologias
 
@@ -45,32 +45,6 @@ Infraestrutura:
 - [Memorial técnico de desenvolvimento](docs/MEMORIAL_TECNICO_DE_DESENVOLVIMENTO.md)
 - [Dicionário de dados](docs/DICIONARIO_DE_DADOS.md)
 - [Workflow de CI/CD](.github/workflows/ci-cd.yml)
-
-## Evidências visuais
-
-As capturas abaixo demonstram os principais fluxos e a responsividade da interface.
-
-### Login
-
-![Login desktop](evidencias/login-desktop.png)
-![Login mobile](evidencias/login-mobile.png)
-
-### Dashboard
-
-![Dashboard desktop](evidencias/dashboard-desktop.png)
-![Dashboard mobile](evidencias/dashboard-mobile.png)
-
-### Solicitações
-
-![Solicitações desktop](evidencias/solicitacoes-desktop.png)
-![Solicitações mobile](evidencias/solicitacoes-mobile.png)
-
-### Detalhes e modais
-
-![Detalhes da solicitação desktop](evidencias/detalhes-solicitacoes-desktop.png)
-![Detalhes da solicitação mobile](evidencias/detalhes-solicitacoes-mobile.png)
-![Modal de solicitação](evidencias/modal-solicitacoes.png)
-![Modal de edição](evidencias/modal-edicoes.png)
 
 ## Estrutura do projeto
 
